@@ -1,0 +1,195 @@
+<script type="jsrender" id="api">
+
+	<!--[if lt IE 7]>
+	<p class="chrome">You are using an <strong>outdated</strong> browser. Please <a
+		href="http://browsehappy.com/">upgrade your browser</a> or <a
+		href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+		improve your experience.</p>
+	<![endif]-->
+
+	<div class="page fixedHead">
+		<div class="head  title">
+			<header>
+				<h1><a class="linkButton" href="../index.html">Hm.js</a></h1>
+
+				<p>where model and view should live in</p>
+			</header>
+
+			<nav class="hlist">
+				<a href="../index.html">Home</a>
+
+				<a href="doc.html" class="selected">Documentation</a>
+				<a href="//github.com/fredyang/hm.js">Source on GitHub</a>
+
+			</nav>
+
+		</div>
+
+		<div class="body">
+			<div class="leftCol">
+				<div class="mod  ">
+					<div class="hd">
+						Documentation
+
+<!--
+						<button data-sub="hide:expandTree;true:expandTree" class="fR bloc icon icon-expand"></button>
+						<button data-sub="show:expandTree;false:expandTree" class="fR bloc icon icon-collapse"></button>
+
+						toggleClass:expandTree|!treeOverflow
+-->
+					</div>
+
+					<div class="bd tree">
+						<ul class="nav-v" data-sub="!init nameChanged:getSubEntries|*tmpl|api.view.categoryTree;
+											        $toggleSubtree:/api.handlers.toggleSubtree;
+											        !afterUpdate:selectedEntryName|#/api.handlers.expandParentNodeForSelectedEntry;
+													tabContainer:selectedEntryName">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="main rel" data-sub="tabContainer:apiAction|action">
+
+				<a class="imageLink icon-edit icon abs pinTR pls"
+				   data-sub="$click:editMode|*true;
+								             hide:editMode;
+								             $click:apiAction|*setTo|edit"
+
+				   title="Switch to edit mode"></a>
+
+				<a class="imageLink icon-review icon abs pinTR pls"
+
+				   data-sub="$click:editMode|*false;
+								             show:editMode;
+								             $click:apiAction|*setTo|view"
+
+				   title="Leave edit mode"></a>
+
+				<nav class="hlist" data-sub="show:editMode">
+					<a tab-link="view" tab-container-name="action">View</a>
+					<a tab-link="edit" tab-container-name="action">Edit</a>
+
+					<a data-sub="$click:/api.handlers.deleteSelected">
+
+						Delete</a>
+					<a tab-link="list" tab-container-name="action">List</a>
+
+					<a data-sub="$click:entries|*newShadowItem;
+								 $click:/api.apiAction|*setTo|edit">New API</a>
+
+					<a data-sub="confirm:_|This will overwrite all your data including your edit?;
+								 $click:/api.handlers.discardChange">Update documentation</a>
+				</nav>
+
+				<div tab-view="view" tab-container-name="action"
+				     data-sub="tmplOnChange:selectedEntry|api.view.selectedEntry">
+				</div>
+				<div tab-view="list" tab-container-name="action" data-sub="ns:entries;
+												   tmpl:/api|api.editApi.list">
+				</div>
+
+				<div tab-view="edit" tab-container-name="action"
+				     data-sub="ns:entries;
+				               tmpl:/api|api.editApi.form">
+				</div>
+
+
+				<p class="fR">&copy; Fred Yang - <a href="http://semanticsworks.com">http://semanticsworks.com</a>
+				</p>
+
+			</div>
+		</div>
+		<!--		<div class="footer   title">
+					<p data-sub="logPanel:_"></p>
+					<p class="fR man">&copy; Fred Yang - <a href="http://semanticsworks.com">http://semanticsworks.com</a>
+			</p>
+		</div>-->
+	</div>
+	</div>
+
+
+</script>
+
+<script type="jsrender" id="api.editApi.form">
+
+	<table class="layout apiForm">
+		<col style="width:120px">
+		<col style="width:auto">
+		<tbody data-sub="ns:*edit.item;
+						 tmplOnChange:.">
+
+		<tr class="toolbar">
+			<td colspan="2">
+
+				<a class="imageLink icon-save icon" data-sub="checkValidity:.;
+															  saveEdit:.;
+															  $click:/api.apiAction|*setTo|view">Save
+					API</a>
+
+
+				<a class="imageLink icon-no icon" data-sub="$click:/api.handlers.cancelEdit">Cancel
+					Edit API</a>
+
+			</td>
+
+		</tr>
+
+		<tr>
+			<td>
+				<label>Name:</label>
+			</td>
+
+			<td>
+				<input type="text"
+				       data-sub="ns:name;
+				                 val:.;
+				                 required:.;
+				                 warn:"/>
+			</td>
+		</tr>
+
+		<!--<tr>
+			<td><label>Type:</label></td>
+			<td><select data-sub="val:type">
+				<option>category</option>
+				<option>method</option>
+				<option>both</option>
+			</select></td>
+		</tr>-->
+
+		<tr>
+			<td><label>Namespace:</label></td>
+			<td><input type="text" placeholder="e.g a.b.c" data-sub="val:namespace"/></td>
+		</tr>
+
+
+		<tr>
+			<td><label>Head:</label></td>
+			<td><input type="text" data-sub="ns:shortDesc;
+			                                 val:.;
+			                                 required:.;
+			                                 warn:"/></td>
+		</tr>
+
+		<tr>
+			<td><label>Descriptions:</label></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan="2"><textarea class="l" data-sub="val:longDesc"/></td>
+		</tr>
+
+		<tr>
+			<td colspan="2">
+				<label>Signatures:</label>
+
+				<div data-sub="ns:signatures;
+				               tmpl:/|api.editSignature.list"></div>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+
+</script>

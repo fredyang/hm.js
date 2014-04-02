@@ -1,0 +1,30 @@
+<script type="jsrender" id="api.view.categoryTree">
+	{{for #data}}
+
+	{{*
+		view.ctx.subEntries = view.ctx.get("/api.getSubEntries", data);
+	}}
+	<li>
+
+		{{if #ctx.subEntries.length}}
+
+			<span class="button ui-icon {{:~getExpanderClass(#data)}} fL right10"
+			      data-sub="mapClick:.|toggleSubtree">&nbsp;</span>
+
+			<a tab-link="{{:~getEntryFullName(#data)}}"
+			   data-sub="mapEvent:.|dblclick,toggleSubtree">{{:name}}</a>
+
+			<ul {{:~getSubEntryStyle(#data)}} >
+				{{for ~subEntries tmpl="api.view.categoryTree" /}}
+			</ul>
+
+		{{else}}
+
+			<span class="button ui-icon ui-icon-blank fL right10"></span>
+			<a tab-link="{{:~getEntryFullName(#data)}}">{{:name}}</a>
+
+		{{/if}}
+	</li>
+	{{/for}}
+</script>
+

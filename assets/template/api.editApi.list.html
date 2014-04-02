@@ -1,0 +1,38 @@
+<script type="jsrender" id="api.editApi.list">
+	<table class="fastTable wb">
+		<col width="135px;">
+		<col>
+		<tr>
+			<th>Actions</th>
+			<th class="txtL">Full Name</th>
+		</tr>
+		<tbody data-sub="listView:.|api.editApi.row;
+		                 movableRow:.;
+						 $review:/api.handlers.review;
+						 $editRow:/api.handlers.edit;
+						 !updateFullName.1:.|*updateRowView|api.editApi.row;
+						 $deleteRow:/api.handlers.remove;
+						 tabContainer:/api.selectedEntryName|apiList">
+
+		</tbody>
+	</table>
+</script>
+
+
+
+<script type="jsrender" id="api.editApi.row">
+	<tr tab-view="{{:~getEntryFullName(#data)}}" tab-container-name="apiList">
+		<td>
+			<button class="icon-edit icon editRow" title="Edit"></button>
+			<button class="icon-delete icon deleteRow"
+			        title="Delete"></button>
+			<button class="icon-review icon review"
+			        title="Review"></button>
+			<button class="icon-up icon moveUp"
+			        title="Move up"></button>
+			<button class="icon-down icon moveDown"
+			        title="Move down"></button>
+		</td>
+		<td>{{:~getEntryFullName(#data)}}</td>
+	</tr>
+</script>
