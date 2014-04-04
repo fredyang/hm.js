@@ -1,8 +1,8 @@
  /*!
-  * Hm.js JavaScript Library v1.0.0pre
+  * Hm.js JavaScript Library v1.0.0
   * © Fred Yang - http://semanticsworks.com
   * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-  * Date: Wed Apr 2 00:50:28 2014 -0400
+  * Date: Tue Apr 1 19:15:50 2014 -0700
   */
 (function( $, window, undefined ) {
 	"use strict";
