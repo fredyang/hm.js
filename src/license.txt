@@ -1,0 +1,6 @@
+ /*!
+  * Hm.js JavaScript Library v@version
+  * © Fred Yang - http://semanticsworks.com
+  * License: MIT (http://www.opensource.org/licenses/mit-license.php)
+  * Date: @date
+  */

@@ -1,0 +1,32 @@
+{
+  "name": "hm.js",
+  "title": "hm.js",
+  "description": "a simple single page application framework",
+  "version": "1.0.0",
+  "homepage": "http://semanticsworks.com",
+  "author": {
+    "name": "Fred Yang",
+    "url": "http://semanticsworks.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredyang/hm.js/issues"
+  },
+  "bugs": {
+    "url": "http://"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "keywords": [],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-htmlmin": "~0.1.3"
+  }
+}

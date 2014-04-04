@@ -1,0 +1,11 @@
+{
+  "smarttabs": true,
+  "evil": true,
+  "expr": true,
+  "validthis": true,
+  "newcap": false,
+  "globals": {
+	  "location": false,
+	  "document": false
+  }
+}
